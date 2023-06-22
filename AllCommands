@@ -1,0 +1,390 @@
+
+hp@ppc MINGW64 ~
+$ cd project
+
+hp@ppc MINGW64 ~/project (master)
+$ ls -a
+./  ../  .git/
+
+hp@ppc MINGW64 ~/project (master)
+$ ls .git
+HEAD  config  description  hooks/  info/  objects/  refs/
+
+hp@ppc MINGW64 ~/project (master)
+$ touch names.txt
+
+hp@ppc MINGW64 ~/project (master)
+$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        names.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+hp@ppc MINGW64 ~/project (master)
+$ git add .
+
+hp@ppc MINGW64 ~/project (master)
+$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   names.txt
+
+
+hp@ppc MINGW64 ~/project (master)
+$ git commit -m "added file"
+[master (root-commit) 0df5060] added file
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 names.txt
+
+hp@ppc MINGW64 ~/project (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+hp@ppc MINGW64 ~/project (master)
+$ v1 name.txt
+bash: v1: command not found
+
+hp@ppc MINGW64 ~/project (master)
+$ cat name.txt
+cat: name.txt: No such file or directory
+
+hp@ppc MINGW64 ~/project (master)
+$ v1 names.txt
+bash: v1: command not found
+
+hp@ppc MINGW64 ~/project (master)
+$ vi names.txt
+
+hp@ppc MINGW64 ~/project (master)
+$ cat names.txt
+joined
+
+started the course
+
+joined
+:x
+
+
+hp@ppc MINGW64 ~/project (master)
+$ git restore --staged names.txt
+
+hp@ppc MINGW64 ~/project (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   names.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+hp@ppc MINGW64 ~/project (master)
+$ git add .
+warning: LF will be replaced by CRLF in names.txt.
+The file will have its original line endings in your working directory
+
+hp@ppc MINGW64 ~/project (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   names.txt
+
+
+hp@ppc MINGW64 ~/project (master)
+$ git commit -m "addd new text"
+[master 9a1642b] addd new text
+ 1 file changed, 7 insertions(+)
+
+hp@ppc MINGW64 ~/project (master)
+$ git log
+commit 9a1642b42b2328a4ca652c8c2f6a17696925be05 (HEAD -> master)
+Author: Akansha Mundel <mundel30003@gmail.com>
+Date:   Thu Jun 22 13:18:22 2023 +0530
+
+    addd new text
+
+commit 0df5060b991ba19079d5c0b818974ff39563dfd9
+Author: Akansha Mundel <mundel30003@gmail.com>
+Date:   Thu Jun 22 12:59:54 2023 +0530
+
+    added file
+
+hp@ppc MINGW64 ~/project (master)
+$ rm -rf names.txt
+
+hp@ppc MINGW64 ~/project (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    names.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+hp@ppc MINGW64 ~/project (master)
+$ git add .
+
+hp@ppc MINGW64 ~/project (master)
+$ git commit -m "delete the names.txt file"
+[master 8d4ad7f] delete the names.txt file
+ 1 file changed, 7 deletions(-)
+ delete mode 100644 names.txt
+
+hp@ppc MINGW64 ~/project (master)
+$ git log
+commit 8d4ad7fc370ab56edcbc9601b630739b406f2c91 (HEAD -> master)
+Author: Akansha Mundel <mundel30003@gmail.com>
+Date:   Thu Jun 22 13:20:45 2023 +0530
+
+    delete the names.txt file
+
+commit 9a1642b42b2328a4ca652c8c2f6a17696925be05
+Author: Akansha Mundel <mundel30003@gmail.com>
+Date:   Thu Jun 22 13:18:22 2023 +0530
+
+    addd new text
+
+commit 0df5060b991ba19079d5c0b818974ff39563dfd9
+Author: Akansha Mundel <mundel30003@gmail.com>
+Date:   Thu Jun 22 12:59:54 2023 +0530
+
+    added file
+
+hp@ppc MINGW64 ~/project (master)
+$ git reset ^C
+
+hp@ppc MINGW64 ~/project (master)
+$ git reset  0df5060b991ba19079d5c0b818974ff39563dfd9
+Unstaged changes after reset:
+D       names.txt
+
+hp@ppc MINGW64 ~/project (master)
+$ git log
+commit 0df5060b991ba19079d5c0b818974ff39563dfd9 (HEAD -> master)
+Author: Akansha Mundel <mundel30003@gmail.com>
+Date:   Thu Jun 22 12:59:54 2023 +0530
+
+    added file
+
+hp@ppc MINGW64 ~/project (master)
+$ git status
+On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    names.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+hp@ppc MINGW64 ~/project (master)
+$ git add .
+
+hp@ppc MINGW64 ~/project (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        deleted:    names.txt
+
+
+hp@ppc MINGW64 ~/project (master)
+$ git log
+commit 0df5060b991ba19079d5c0b818974ff39563dfd9 (HEAD -> master)
+Author: Akansha Mundel <mundel30003@gmail.com>
+Date:   Thu Jun 22 12:59:54 2023 +0530
+
+    added file
+
+hp@ppc MINGW64 ~/project (master)
+$ touch secondfile.txt
+
+hp@ppc MINGW64 ~/project (master)
+$ vi secondfile.txt
+
+hp@ppc MINGW64 ~/project (master)
+$ git add .
+warning: LF will be replaced by CRLF in secondfile.txt.
+The file will have its original line endings in your working directory
+
+hp@ppc MINGW64 ~/project (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        deleted:    names.txt
+        new file:   secondfile.txt
+
+
+hp@ppc MINGW64 ~/project (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        deleted:    names.txt
+        new file:   secondfile.txt
+
+
+hp@ppc MINGW64 ~/project (master)
+$ git stash
+Saved working directory and index state WIP on master: 0df5060 added file
+
+hp@ppc MINGW64 ~/project (master)
+$ git log
+commit 0df5060b991ba19079d5c0b818974ff39563dfd9 (HEAD -> master)
+Author: Akansha Mundel <mundel30003@gmail.com>
+Date:   Thu Jun 22 12:59:54 2023 +0530
+
+    added file
+
+hp@ppc MINGW64 ~/project (master)
+$ git stash pop
+Removing names.txt
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   secondfile.txt
+
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        deleted:    names.txt
+
+Dropped refs/stash@{0} (1b8e1ed92930a83700270adfdd7ec3c0499892e1)
+
+hp@ppc MINGW64 ~/project (master)
+$ git add.
+git: 'add.' is not a git command. See 'git --help'.
+
+The most similar command is
+        add
+
+hp@ppc MINGW64 ~/project (master)
+$ git add .
+
+hp@ppc MINGW64 ~/project (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        deleted:    names.txt
+        new file:   secondfile.txt
+
+
+hp@ppc MINGW64 ~/project (master)
+$ git stash
+Saved working directory and index state WIP on master: 0df5060 added file
+
+hp@ppc MINGW64 ~/project (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+hp@ppc MINGW64 ~/project (master)
+$ git remote add origin https://github.com/AkanshaMundel/gitTutorial
+
+hp@ppc MINGW64 ~/project (master)
+$ git remote -v
+origin  https://github.com/AkanshaMundel/gitTutorial (fetch)
+origin  https://github.com/AkanshaMundel/gitTutorial (push)
+
+hp@ppc MINGW64 ~/project (master)
+$ git push origin master
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 216 bytes | 216.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/AkanshaMundel/gitTutorial
+ * [new branch]      master -> master
+
+hp@ppc MINGW64 ~/project (master)
+$ touch thirdFile.txt
+
+hp@ppc MINGW64 ~/project (master)
+$ git add.
+git: 'add.' is not a git command. See 'git --help'.
+
+The most similar command is
+        add
+
+hp@ppc MINGW64 ~/project (master)
+$ git add .
+
+hp@ppc MINGW64 ~/project (master)
+$ git commit -m "3rd file added"
+[master 8841cc1] 3rd file added
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 thirdFile.txt
+
+hp@ppc MINGW64 ~/project (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+hp@ppc MINGW64 ~/project (master)
+$ git log
+commit 8841cc1476c18c4c9fc389397a985e284d009896 (HEAD -> master)
+Author: Akansha Mundel <mundel30003@gmail.com>
+Date:   Thu Jun 22 14:01:30 2023 +0530
+
+    3rd file added
+
+commit 0df5060b991ba19079d5c0b818974ff39563dfd9 (origin/master)
+Author: Akansha Mundel <mundel30003@gmail.com>
+Date:   Thu Jun 22 12:59:54 2023 +0530
+
+    added file
+
+hp@ppc MINGW64 ~/project (master)
+$ git brancch feature
+git: 'brancch' is not a git command. See 'git --help'.
+
+The most similar command is
+        branch
+
+hp@ppc MINGW64 ~/project (master)
+$ git branch feature
+
+hp@ppc MINGW64 ~/project (master)
+$ git push origin master
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 252 bytes | 252.00 KiB/s, done.
+Total 2 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/AkanshaMundel/gitTutorial
+   0df5060..8841cc1  master -> master
+
+hp@ppc MINGW64 ~/project (master)
+$ git remote -v
+origin  https://github.com/AkanshaMundel/gitTutorial (fetch)
+origin  https://github.com/AkanshaMundel/gitTutorial (push)
+
+hp@ppc MINGW64 ~/project (master)
+$
+
+git push origin master 
+git remote add origin url -> pp 
+git remote add upstream url -> main repo
+if want to sync upstream branch 
+git checkout main
+git fetch --all --prune  or git pull upstream main
+git  reset --hard upstram/main --> cmd to updated my origin brch to main upstream brch 
+//to unstage it
+or simply use git log 
+then git reset id--
+or 
+git restore --stage 
+or git rebase -i id -> above to tht ids all unstage 
